@@ -1,0 +1,23 @@
+{
+    "Properties": {
+        "PolicyDocument": {
+            "Statement": [
+                {
+                    "Action": [
+                        "s3:*"
+                    ],
+                    "Effect": "Allow",
+                    "Resource": [
+                        "*"
+                    ]
+                }
+            ]
+        },
+        "PolicyName": "AllowS3",
+        "Roles": [
+            {
+                "Ref": "Role"
+            }
+        ]
+    }
+}

@@ -117,6 +117,35 @@ t.add_resource(Role(
     )
 ))
 
+t.add_resource(IAMPolicy(
+    "Policy1",
+    PolicyName="AllowCodePipeline",
+    PolicyDocument=Policy(
+        Statement=[
+            Statement(
+                Effect=Allow,
+                Action=[Action("codepipeline", "*")],
+                Resource=["*"]
+            )
+        ]
+    ),
+    Roles=[Ref("Role")]
+))
+
+t.add_resource(IAMPolicy(
+    "Policy2",
+    PolicyName="AllowS3",
+    PolicyDocument=Policy(
+        Statement=[
+            Statement(
+                Effect=Allow,
+                Action=[Action("s3", "*")],
+                Resource=["*"]
+            )
+        ]
+    ),
+    Roles=[Ref("Role")]
+))
 t.add_resource(InstanceProfile(
     "InstanceProfile",
     Path="/",
